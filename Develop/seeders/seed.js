@@ -1,11 +1,8 @@
-let mongoose = require("mongoose");
-let db = require("../models");
+// let mongoose = require("mongoose");
+let Workout = require("../models/workout");
 
-mongoose.connect("mongodb://localhost/workout_tracker", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
 
+console.log("seeding"); 
 let workoutSeed = [
   {
     day: new Date().setDate(new Date().getDate()-10),
@@ -135,13 +132,22 @@ let workoutSeed = [
   }
 ];
 
-db.Workout.deleteMany({})
-  .then(() => db.Workout.collection.insertMany(workoutSeed))
-  .then(data => {
-    console.log(data.result.n + " workout inserted!");
-    process.exit(0);
-  })
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+module.exports = { 
+  run: function() {
+    console.log("seeding2"); 
+    Workout.deleteMany({})
+    .then(() => Workout.collection.insertMany(workoutSeed))
+    .then(data => {
+      console.log(data.result.n + " workout inserted!");
+      // process.exit(0);
+    })
+    .catch(err => {
+      console.error(err);
+      process.exit(1);
+    });
+  }
+}
+
+
+
+  // module.exports = seed;  
