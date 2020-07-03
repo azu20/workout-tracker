@@ -14,13 +14,13 @@ app.use(workoutController);
 
 app.use(express.static("public"));
 
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
-//   useNewUrlParser: true,
-//   useFindAndModify: false
-// });
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
-//seeds.run();
-// routes
+seeds.run();
+
 // app.use(require("./routes/api.js"));
 
 app.listen(PORT, () => {

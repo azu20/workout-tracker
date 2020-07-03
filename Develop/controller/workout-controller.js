@@ -51,20 +51,33 @@ router.get('/api/workouts/range', (req, res) => {
 //add an excercise
 router.put("/api/workouts/:id", (req, res) => {
     console.log("please show this");
-    Workout.insert(
-        // Workout.update(
+    const newExcercise = new Workout(req.body);
+    // console.log(ex);
+    Workout.insertMany(
         {
-            $set: {
-                type: req.body.type,
-                name: req.body.name,
-                duration: req.body.duration,
-                weight: req.body.weight,
-                reps: req.body.reps,
-                sets: req.body.sets,
-                distance: req.body.distance
-                // modified: Date.now()
-            }
+            _id: mongojs.ObjectId(req.params.id)
         },
+        {
+            exercises: newExcercise 
+            // {
+            //     $set: {
+            //         type: req.body.type,
+            //         name: req.body.name,
+            //         duration: req.body.duration,
+            //         weight: req.body.weight,
+            //         reps: req.body.reps,
+            //         sets: req.body.sets,
+            //         distance: req.body.distance
+            //         // modified: Date.now()
+            //     }
+
+            // },
+
+            // },
+            // { upsert: true }
+
+        },
+        // },
         (error, data) => {
             if (error) {
                 console.log(error);
@@ -76,8 +89,7 @@ router.put("/api/workouts/:id", (req, res) => {
             res.send(data);
         });
 
-    console.log(req.body.exercises);
-});
+  });
 ///Create a workout
 router.post('/api/workouts', (req, res) => {
     Workout.create(req.body)
