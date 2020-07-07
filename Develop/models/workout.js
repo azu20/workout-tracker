@@ -14,7 +14,7 @@ const workoutSchema = new Schema({
     trim: true,
     required: "Enter workout day, Sunday - Saturday"
   },  
-  exercises: {
+  exercises: [{
       type: {
         type: String,
         trim: true,
@@ -45,7 +45,7 @@ const workoutSchema = new Schema({
         type: Number,
         // required: "Enter sets"
       }
-    }
+    }]
   });
 
 const Workout = mongoose.model("Workout", workoutSchema);
