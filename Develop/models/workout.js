@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
 
 const workoutSchema = new Schema({
   day: {
-    type: String,
+    type: Number,
     trim: true,
     required: "Enter workout day, Sunday - Saturday"
   },  
@@ -41,7 +41,7 @@ const workoutSchema = new Schema({
         type: Number,
         // required: "Enter reps"
       },
-      set: {
+      sets: {
         type: Number,
         // required: "Enter sets"
       }
