@@ -3,7 +3,7 @@ const Workout = require("../models/workout");
 const mongoose = require("mongoose");
 const mongojs = require("mongojs");
 
-//get your last workout: uncoment line 14
+//get your last workout: Displays on main page
 router.get('/api/workouts', (req, res) => {
    
     Workout.find({})
@@ -19,7 +19,6 @@ router.get('/api/workouts', (req, res) => {
 //get your last workout: uncoment line 14
 router.get('/exercise/:id', (req, res) => {
     Workout.find({ _id: req.params.id })
-        // .sort({ date: -1 })
         .then(dbWorkout => {
             res.json(dbWorkout);
         })
