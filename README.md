@@ -1,4 +1,4 @@
-# Unit 17 Nosql Homework: Workout Tracker
+# Unit 17 Nosql: Workout Tracker
 
 This app is a workout tracker. This app uses a Mongo database with a Mongoose schema and handle routes with Express. 
 
